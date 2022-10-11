@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">W5_P4</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="game_instructions">Find and check words for points!</string>
-    <string name="created_word_ul_wrapper"><u></u></string>
+    <string name="ul_wrapper"><u>hello mufu</u></string>
     <string name="clear_button_label">CLEAR</string>
-    <string name="send_button_label">CHECK</string>
+    <string name="check_button_label">CHECK</string>
+    <string name="score_label">SCORE:</string>
+    <string name="ng_button_label">NEW GAME</string>
 </resources>

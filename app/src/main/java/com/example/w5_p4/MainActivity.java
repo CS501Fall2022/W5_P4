@@ -32,6 +32,17 @@ public class MainActivity extends AppCompatActivity implements BoardFragment.Pas
         transaction.add(R.id.score_frag, viewOut);
         transaction.commit();
 
+        // TODO:
+        // once piazza answered, verify model functionality
+        // setup clear button
+        // randomly assign letters to grid buttons
+        // create selectLetter function
+        // link grid buttons to selectLetter function
+        // ensure only grid buttons near eachother can be selected (use ids!)
+        // create data transfer function and link to check button
+        // ng button shenanigans
+
+
     }
 
 }
