@@ -30,97 +30,97 @@
         app:layout_constraintVertical_bias="0.236">
 
         <Button
-            android:id="@+id/b00"
+            android:id="@+id/b0"
             style="@style/grid_letter"
             android:layout_row="0"
             android:layout_column="0" />
 
         <Button
-            android:id="@+id/b01"
+            android:id="@+id/b1"
             style="@style/grid_letter"
             android:layout_row="0"
             android:layout_column="1" />
 
         <Button
-            android:id="@+id/b02"
+            android:id="@+id/b2"
             style="@style/grid_letter"
             android:layout_row="0"
             android:layout_column="2" />
 
         <Button
-            android:id="@+id/b03"
+            android:id="@+id/b3"
             style="@style/grid_letter"
             android:layout_row="0"
             android:layout_column="3" />
+
+        <Button
+            android:id="@+id/b4"
+            style="@style/grid_letter"
+            android:layout_row="1"
+            android:layout_column="0" />
+
+        <Button
+            android:id="@+id/b5"
+            style="@style/grid_letter"
+            android:layout_row="1"
+            android:layout_column="1" />
+
+        <Button
+            android:id="@+id/b6"
+            style="@style/grid_letter"
+            android:layout_row="1"
+            android:layout_column="2" />
+
+        <Button
+            android:id="@+id/b7"
+            style="@style/grid_letter"
+            android:layout_row="1"
+            android:layout_column="3" />
+
+        <Button
+            android:id="@+id/b8"
+            style="@style/grid_letter"
+            android:layout_row="2"
+            android:layout_column="0" />
+
+        <Button
+            android:id="@+id/b9"
+            style="@style/grid_letter"
+            android:layout_row="2"
+            android:layout_column="1" />
 
         <Button
             android:id="@+id/b10"
             style="@style/grid_letter"
-            android:layout_row="1"
-            android:layout_column="0" />
+            android:layout_row="2"
+            android:layout_column="2" />
 
         <Button
             android:id="@+id/b11"
             style="@style/grid_letter"
-            android:layout_row="1"
-            android:layout_column="1" />
+            android:layout_row="2"
+            android:layout_column="3" />
 
         <Button
             android:id="@+id/b12"
             style="@style/grid_letter"
-            android:layout_row="1"
-            android:layout_column="2" />
+            android:layout_row="3"
+            android:layout_column="0" />
 
         <Button
             android:id="@+id/b13"
             style="@style/grid_letter"
-            android:layout_row="1"
-            android:layout_column="3" />
-
-        <Button
-            android:id="@+id/b20"
-            style="@style/grid_letter"
-            android:layout_row="2"
-            android:layout_column="0" />
-
-        <Button
-            android:id="@+id/b21"
-            style="@style/grid_letter"
-            android:layout_row="2"
-            android:layout_column="1" />
-
-        <Button
-            android:id="@+id/b22"
-            style="@style/grid_letter"
-            android:layout_row="2"
-            android:layout_column="2" />
-
-        <Button
-            android:id="@+id/b23"
-            style="@style/grid_letter"
-            android:layout_row="2"
-            android:layout_column="3" />
-
-        <Button
-            android:id="@+id/b30"
-            style="@style/grid_letter"
-            android:layout_row="3"
-            android:layout_column="0" />
-
-        <Button
-            android:id="@+id/b31"
-            style="@style/grid_letter"
             android:layout_row="3"
             android:layout_column="1" />
 
         <Button
-            android:id="@+id/b32"
+            android:id="@+id/b14"
             style="@style/grid_letter"
             android:layout_row="3"
             android:layout_column="2" />
 
         <Button
-            android:id="@+id/b33"
+            android:id="@+id/b15"
             style="@style/grid_letter"
             android:layout_row="3"
             android:layout_column="3" />
@@ -130,7 +130,6 @@
     <TextView
         android:id="@+id/created_word"
         style="@style/created_word"
-        android:text="@string/ul_wrapper"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/choice_grid"
         app:layout_constraintHorizontal_bias="0.0"

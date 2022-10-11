@@ -14,19 +14,21 @@ public class ScoreCalculator {
         >= 4 chars long
         >= 2 vowels
         in dictionary
-        NOT used already
+        NOT used already (valid or otherwise)
 
     scoring specifics:
         +1 for each consonant
         +5 for each vowel
         value *= 2   if 'S' 'Z' 'P' 'X' 'Q' used > 1 time
-        value = -10  if fail to meet word requirements
+        value = -10  if input meets word requirements but is not in dictionary
      */
     private final Context currContext;
     private final String special = "SZPXQ";
     private final String cons = "BCDFGHJKLMNRTVWY";
     private final String vows = "AEIOU";
-    private HashSet<String> usedWords = new HashSet<String>();
+    private HashSet<String> usedValidWords = new HashSet<String>();
+    private HashSet<String> usedInvalidWords = new HashSet<String>();
+
 
     public ScoreCalculator(Context context) {
         this.currContext = context;
@@ -34,11 +36,14 @@ public class ScoreCalculator {
 
     // given input, determine change to score
     public int getChange(String input) {
-        int change = -10;
+        int change = calcValue(input);
 
-        if(isWord(input)){
-            usedWords.add(input);
-            change = calcValue(input);
+        if(change != 0){
+            // valid input
+            if(!isWord(input)){
+                // meets word requirements but is not a word
+                change = -10;
+            }
         }
 
         return change;
@@ -46,10 +51,9 @@ public class ScoreCalculator {
 
 
     // is input a word?
-    private boolean isWord(String input) {
-        // does input meet basic requirements?
-        // checking for used words here avoids checking dict and calculating score
-        if (input == null || input.length() < 4 || usedWords.contains(input)) {
+    private boolean isWord(String word) {
+        // word might've failed vowel check. verify validity
+        if(usedInvalidWords.contains(word)){
             return false;
         }
 
@@ -60,7 +64,9 @@ public class ScoreCalculator {
             String entry = bufferedReader.readLine();
 
             while (entry != null) {
-                if (input.equals(entry)) {
+                if (word.equals(entry)) {
+                    // input in dictionary
+                    usedValidWords.add(word);
                     return true;
                 } else {
                     entry = bufferedReader.readLine();
@@ -69,19 +75,28 @@ public class ScoreCalculator {
         } catch (Exception e) {
             Log.e("dictErr", e.toString());
         }
+        // input not in dictionary
+        usedInvalidWords.add(word);
         return false;
     }
 
 
     // what is the value of a given word?
-    private int calcValue(String word) {
+    private int calcValue(String input) {
+        // does input meet basic requirements?
+        if (input == null || input.length() < 4 || usedInvalidWords.contains(input) || usedValidWords.contains(input)) {
+            // input is invalid
+            return 0;
+        }
+
         int vowCount = 0;
         int bonus = 0;
         int value = 0;
         char c;
 
-        for (int j = 0; j < word.length(); j++) {
-            c = word.charAt(j);
+        // calculate value of potential word
+        for (int j = 0; j < input.length(); j++) {
+            c = input.charAt(j);
 
             if (special.indexOf(c) != -1) {
                 // c in SZPXQ
@@ -107,7 +122,8 @@ public class ScoreCalculator {
 
         // not enough vowels, word is invalid
         if(vowCount < 2){
-            value = -10;
+            usedInvalidWords.add(input);
+            value = 0;
         }
 
         return value;
