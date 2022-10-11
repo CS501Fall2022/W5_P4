@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">W5_P4</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="game_instructions">Find and check words for points!</string>
+    <string name="created_word_ul_wrapper"><u></u></string>
+    <string name="clear_button_label">CLEAR</string>
+    <string name="send_button_label">CHECK</string>
 </resources>

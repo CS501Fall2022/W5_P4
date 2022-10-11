@@ -1,14 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BoardFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/game_instructions"
+        style="@style/created_word"
+        android:text="@string/game_instructions"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/choice_grid"
+        app:layout_constraintEnd_toEndOf="@+id/choice_grid"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/choice_grid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.892" />
 
-</FrameLayout>
+    <GridLayout
+        android:id="@+id/choice_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.579">
+
+        <Button
+            android:id="@+id/b00"
+            style="@style/grid_letter"
+            android:layout_row="0"
+            android:layout_column="0" />
+
+        <Button
+            android:id="@+id/b01"
+            style="@style/grid_letter"
+            android:layout_row="0"
+            android:layout_column="1" />
+
+        <Button
+            android:id="@+id/b02"
+            style="@style/grid_letter"
+            android:layout_row="0"
+            android:layout_column="2" />
+
+        <Button
+            android:id="@+id/b03"
+            style="@style/grid_letter"
+            android:layout_row="0"
+            android:layout_column="3" />
+
+        <Button
+            android:id="@+id/b10"
+            style="@style/grid_letter"
+            android:layout_row="1"
+            android:layout_column="0" />
+
+        <Button
+            android:id="@+id/b11"
+            style="@style/grid_letter"
+            android:layout_row="1"
+            android:layout_column="1" />
+
+        <Button
+            android:id="@+id/b12"
+            style="@style/grid_letter"
+            android:layout_row="1"
+            android:layout_column="2" />
+
+        <Button
+            android:id="@+id/b13"
+            style="@style/grid_letter"
+            android:layout_row="1"
+            android:layout_column="3" />
+
+        <Button
+            android:id="@+id/b20"
+            style="@style/grid_letter"
+            android:layout_row="2"
+            android:layout_column="0" />
+
+        <Button
+            android:id="@+id/b21"
+            style="@style/grid_letter"
+            android:layout_row="2"
+            android:layout_column="1" />
+
+        <Button
+            android:id="@+id/b22"
+            style="@style/grid_letter"
+            android:layout_row="2"
+            android:layout_column="2" />
+
+        <Button
+            android:id="@+id/b23"
+            style="@style/grid_letter"
+            android:layout_row="2"
+            android:layout_column="3" />
+
+        <Button
+            android:id="@+id/b30"
+            style="@style/grid_letter"
+            android:layout_row="3"
+            android:layout_column="0" />
+
+        <Button
+            android:id="@+id/b31"
+            style="@style/grid_letter"
+            android:layout_row="3"
+            android:layout_column="1" />
+
+        <Button
+            android:id="@+id/b32"
+            style="@style/grid_letter"
+            android:layout_row="3"
+            android:layout_column="2" />
+
+        <Button
+            android:id="@+id/b33"
+            style="@style/grid_letter"
+            android:layout_row="3"
+            android:layout_column="3" />
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/created_word"
+        style="@style/created_word"
+        android:text="@string/created_word_ul_wrapper"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/choice_grid"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/choice_grid"
+        app:layout_constraintTop_toBottomOf="@+id/choice_grid"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <Button
+        android:id="@+id/clear_button"
+        style="@style/control_button"
+        android:text="@string/clear_button_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/send_button"
+        app:layout_constraintStart_toStartOf="@+id/choice_grid"
+        app:layout_constraintTop_toBottomOf="@+id/created_word"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <Button
+        android:id="@+id/send_button"
+        style="@style/control_button"
+        android:text="@string/send_button_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/choice_grid"
+        app:layout_constraintStart_toEndOf="@+id/clear_button"
+        app:layout_constraintTop_toBottomOf="@+id/created_word"
+        app:layout_constraintVertical_bias="0.125" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
