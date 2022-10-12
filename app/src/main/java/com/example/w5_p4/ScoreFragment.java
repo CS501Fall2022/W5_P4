@@ -22,6 +22,7 @@ public class ScoreFragment extends Fragment {
         void displayData(int i);
     }
 
+    // updates scoreboard via function defined in activity
     public void updateScore(int change){
         ((ScoreInterface)getActivity()).displayData(change);
     }
@@ -33,6 +34,7 @@ public class ScoreFragment extends Fragment {
         this.newgame = v.findViewById(R.id.ng_button);
         this.scoreBoard = v.findViewById(R.id.score_display);
 
+        // resets game via function defined in activity
         newgame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

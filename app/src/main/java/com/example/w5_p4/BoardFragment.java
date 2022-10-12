@@ -11,8 +11,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Random;
 
 public class BoardFragment extends Fragment {
     Button clear;
@@ -36,7 +35,7 @@ public class BoardFragment extends Fragment {
     }
 
     // reset selections
-    // onClick function for clear button
+    // onClick function for clear button, also used in check button
     public void clearSelectedLetters(){
         currWord.setText("");
         mostRecentClickIndex = -1;
@@ -59,18 +58,13 @@ public class BoardFragment extends Fragment {
         this.inputGrid = v.findViewById(R.id.choice_grid);
         this.mostRecentClickIndex = -1;
 
-        String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        ArrayList<Integer> letters = new ArrayList<Integer>();
-        for(int i = 0; i < inputGrid.getChildCount(); i++){
-            letters.add(i);
-        }
-        Collections.shuffle(letters);
-        // now have list of random numbers. use to get random letters
+        String alpha = "ETAOINSRHLDCUMFPGWYBVKXJQZ";
+        Random rand = new Random();
 
         Button b;
         for(int j = 0; j < inputGrid.getChildCount(); j++){
             b = (Button) inputGrid.getChildAt(j);
-            b.setText(String.valueOf(alpha.charAt(letters.get(j))));
+            b.setText(String.valueOf(alpha.charAt(rand.nextInt(26))));
 //            Log.e("test", b.getText().toString() +" " + String.valueOf(j));
         }
 
@@ -88,7 +82,6 @@ public class BoardFragment extends Fragment {
                 clearSelectedLetters();
             }
         });
-
 
         return v;
     }

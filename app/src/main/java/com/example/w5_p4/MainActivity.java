@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements BoardFragment.BoardInterface, ScoreFragment.ScoreInterface {
     ScoreCalculator model;
@@ -21,12 +22,16 @@ public class MainActivity extends AppCompatActivity implements BoardFragment.Boa
 
         if(wordVal == 0){
             // neutral toast
+            Toast.makeText(this, "0 Points! \n\"" + word + "\" is not a valid word or has already been used!", Toast.LENGTH_LONG).show();
         }
         else if(wordVal == -10){
             // bad toast
+            Toast.makeText(this, "-10 Points! \n\"" + word + "\" is not in dictionary!", Toast.LENGTH_LONG).show();
         }
         else{
             // good toast
+            Toast.makeText(this, "+" + String.valueOf(wordVal) +" Points!", Toast.LENGTH_LONG).show();
+
         }
         displayData(wordVal);
     }

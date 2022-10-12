@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
+import java.util.Locale;
 
 public class ScoreCalculator {
     /*
@@ -23,9 +24,9 @@ public class ScoreCalculator {
         value = -10  if input meets word requirements but is not in dictionary
      */
     private final Context currContext;
-    private final String special = "SZPXQ";
-    private final String cons = "BCDFGHJKLMNRTVWY";
-    private final String vows = "AEIOU";
+    private final String special = "szpxq";
+    private final String cons = "bcdfghjklmnrtvwy";
+    private final String vows = "aeiou";
     private HashSet<String> usedValidWords = new HashSet<String>();
     private HashSet<String> usedInvalidWords = new HashSet<String>();
 
@@ -36,6 +37,7 @@ public class ScoreCalculator {
 
     // given input, determine change to score
     public int getChange(String input) {
+        input = input.toLowerCase(Locale.ROOT);
         int change = calcValue(input);
 
         if(change != 0){
@@ -82,7 +84,9 @@ public class ScoreCalculator {
     // what is the value of a given word?
     private int calcValue(String input) {
         // does input meet basic requirements?
+//        Log.e("test", "input = " + input);
         if (input == null || input.length() < 4 || usedInvalidWords.contains(input) || usedValidWords.contains(input)) {
+//            Log.e("test", "failed basic");
             // input is invalid
             return 0;
         }
@@ -96,15 +100,19 @@ public class ScoreCalculator {
         for (int j = 0; j < input.length(); j++) {
             c = input.charAt(j);
 
-            if (special.indexOf(c) != -1) {
+//            Log.e("test", "checking " + String.valueOf(c) );
+            if (this.special.indexOf(c) != -1) {
                 // c in SZPXQ
+//                Log.e("test", "special cons");
                 bonus += 1;
                 value += 1;
-            } else if (cons.indexOf(c) != -1) {
+            } else if (this.cons.indexOf(c) != -1) {
                 // c in BCDFGHJKLMNRTVWY
+//                Log.e("test", "normal cons");
                 value += 1;
-            } else if (vows.indexOf(c) != -1) {
+            } else if (this.vows.indexOf(c) != -1) {
                 // c in AEIOU
+//                Log.e("test", "vowel");
                 value += 5;
                 vowCount++;
             } else {
@@ -115,12 +123,14 @@ public class ScoreCalculator {
 
         // at least 2 special consonants in word
         if(bonus > 1) {
+//            Log.e("test", "special applied");
             value *= 2;
         }
 
         // not enough vowels, word is invalid
         if(vowCount < 2){
-            usedInvalidWords.add(input);
+//            Log.e("test", "not enough vowels");
+            this.usedInvalidWords.add(input);
             value = 0;
         }
 
