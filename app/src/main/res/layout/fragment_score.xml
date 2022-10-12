@@ -19,6 +19,7 @@
     <TextView
         android:id="@+id/score_display"
         style="@style/text_display"
+        android:text="0"
         app:layout_constraintBottom_toBottomOf="@+id/score_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.127"

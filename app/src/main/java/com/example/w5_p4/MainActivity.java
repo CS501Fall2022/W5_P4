@@ -8,18 +8,48 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
 
-public class MainActivity extends AppCompatActivity implements BoardFragment.PassInterface {
+public class MainActivity extends AppCompatActivity implements BoardFragment.BoardInterface, ScoreFragment.ScoreInterface {
     ScoreCalculator model;
     BoardFragment viewIn;
     ScoreFragment viewOut;
 
-
+    // data IN function
     public void passData(String word){
-        // given input, determine new score and send to score fragment for display
+        // determine value, display response toast, send value to score
+        int wordVal = model.getChange(word);
+
+        if(wordVal == 0){
+            // neutral toast
+        }
+        else if(wordVal == -10){
+            // bad toast
+        }
+        else{
+            // good toast
+        }
+        displayData(wordVal);
     }
 
+    // data OUT function
+    public void displayData(int wordVal){
+        String scoreString = viewOut.scoreBoard.getText().toString();
+        int score = Integer.parseInt(scoreString);
+        viewOut.scoreBoard.setText(String.valueOf(score + wordVal));
+    }
+
+    // game resetting function
+    public void resetGame(){
+        viewIn = new BoardFragment();
+        viewOut = new ScoreFragment();
+        model = new ScoreCalculator(this);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.board_frag, viewIn);
+        transaction.replace(R.id.score_frag, viewOut);
+        transaction.commit();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +65,6 @@ public class MainActivity extends AppCompatActivity implements BoardFragment.Pas
         transaction.add(R.id.board_frag, viewIn);
         transaction.add(R.id.score_frag, viewOut);
         transaction.commit();
-
-        // TODO:
-        // create data transfer function and link to check button
-        // ng button shenanigans
 
     }
 

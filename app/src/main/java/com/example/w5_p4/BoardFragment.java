@@ -25,8 +25,28 @@ public class BoardFragment extends Fragment {
         // Required empty public constructor
     }
 
-    interface PassInterface{
+    interface BoardInterface{
         void passData(String s);
+    }
+
+    // place given letter into currWord
+    // called inside onClick function for inputGrid buttons
+    public void updateWord(String s){
+        currWord.setText(currWord.getText() + s);
+    }
+
+    // reset selections
+    // onClick function for clear button
+    public void clearSelectedLetters(){
+        currWord.setText("");
+        mostRecentClickIndex = -1;
+        Button b;
+        for(int j = 0; j < inputGrid.getChildCount(); j++){
+            b = (Button) inputGrid.getChildAt(j);
+            b.setClickable(true);
+            b.setBackgroundColor(getResources().getColor(R.color.purple_200));
+        }
+
     }
 
     @Override
@@ -61,28 +81,16 @@ public class BoardFragment extends Fragment {
             }
         });
 
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((BoardInterface)getActivity()).passData(currWord.getText().toString());
+                clearSelectedLetters();
+            }
+        });
+
 
         return v;
-    }
-
-    // place given letter into currWord
-    // called inside onClick function for inputGrid buttons
-    public void updateWord(String s){
-        currWord.setText(currWord.getText() + s);
-    }
-
-    // reset selections
-    // onClick function for clear button
-    public void clearSelectedLetters(){
-        currWord.setText("");
-        mostRecentClickIndex = -1;
-        Button b;
-        for(int j = 0; j < inputGrid.getChildCount(); j++){
-            b = (Button) inputGrid.getChildAt(j);
-            b.setClickable(true);
-            b.setBackgroundColor(getResources().getColor(R.color.purple_200));
-        }
-
     }
 
 

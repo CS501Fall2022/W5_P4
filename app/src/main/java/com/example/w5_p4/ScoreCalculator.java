@@ -62,15 +62,13 @@ public class ScoreCalculator {
             InputStream inputStream = currContext.getResources().openRawResource(R.raw.words);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String entry = bufferedReader.readLine();
-
             while (entry != null) {
                 if (word.equals(entry)) {
                     // input in dictionary
                     usedValidWords.add(word);
                     return true;
-                } else {
-                    entry = bufferedReader.readLine();
                 }
+                entry = bufferedReader.readLine();
             }
         } catch (Exception e) {
             Log.e("dictErr", e.toString());

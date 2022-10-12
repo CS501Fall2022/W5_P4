@@ -8,21 +8,49 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import android.widget.TextView;
+
 public class ScoreFragment extends Fragment {
-    Button ng;
+    Button newgame;
+    TextView scoreBoard;
     public ScoreFragment() {
         // Required empty public constructor
     }
 
-    public void updateScore(String s){
-        // update score display
+    interface ScoreInterface{
+        void resetGame();
+        void displayData(int i);
+    }
 
+    public void updateScore(int change){
+        ((ScoreInterface)getActivity()).displayData(change);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_score, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_score, container, false);
+
+        this.newgame = v.findViewById(R.id.ng_button);
+        this.scoreBoard = v.findViewById(R.id.score_display);
+
+        newgame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((ScoreInterface)getActivity()).resetGame();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+        return v;
     }
 }
